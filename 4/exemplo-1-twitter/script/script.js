@@ -1,3 +1,4 @@
+
 const tweetButton = document.querySelector(".tweet-composer__button")
 const tweetInput = document.getElementById("tweetComposerInput")
 
@@ -39,10 +40,17 @@ tweetButton.addEventListener("click", function(evento){
     const username =  document.createElement("span")
     username.className = "tweets-timeline__username"
     username.innerHTML = "  @PriscilaSanttos"
+    
+    const date = new Date();
+    const month = date.toLocaleString("pt-br", { month: "short" });
+    const day = date.getDate();
+    const year = date.getUTCFullYear();
+    const minutes = date.getMinutes();
+    const hour = date.getHours();
 
     const data = document.createElement("span")
     data.className = "tweets-timeline__date"
-    data.innerHTML = " 20 de set"
+    data.innerHTML = ` ${day} de ${month} de ${year} às ${hour}:${minutes}`
 
     header.appendChild(name)
     header.appendChild(username)
@@ -58,5 +66,31 @@ tweetButton.addEventListener("click", function(evento){
         localTweetDiv.remove ();
 
     })
+})
+
+tweetInput.addEventListener("keydown", function(){
+    const textBox = this;
+    const maxLength = 280;
+    const contador = document.getElementById("tweetComposerCounter");
+    const caracteresDisponiveis = maxLength - textBox.value.length
+
+    contador.innerHTML = caracteresDisponiveis;
+
+
+    if (caracteresDisponiveis <= 15){
+        contador.style.color = "red";
+    }
+
+    // if (textBox.value.length > maxLength){
+    //     textBox.value = textBox.value.substring(0, maxLength)
+    // } 
+
+    if (caracteresDisponiveis <= 0 ){
+        tweetButton.disabled = true;
+
+    } else {
+        contador.style.color = "white";
+        tweetButton.disabled = false;
+    }
 
 })

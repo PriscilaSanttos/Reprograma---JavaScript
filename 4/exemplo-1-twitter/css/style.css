@@ -6,7 +6,9 @@
 body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     font-size: 16px;
-	background-color: #e6ecf0;
+    /* background-color: #e6ecf0;  */
+    background-image: url(../background.png);
+    background-repeat: repeat;
 }
 
 .wrapper{
@@ -18,8 +20,8 @@ body {
 
 .tweet-composer{
     position: relative;
-    background-color: slategray;
-    padding: 10px 20px;
+    background-color: #98a5e6;
+        padding: 10px 20px;
 }
 
 .tweet-composer__form-group{
